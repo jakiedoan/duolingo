@@ -1,5 +1,54 @@
 {
-  "description.title": "The free, fun, and effective way to learn a language!",
-  "get_started.btn": "Get started",
-  "have_account.btn": "I already have an account"
+  "metadata": "Duolingo - The world's best way to learn a language",
+  "intro": {
+    "language.btn": "Site Language: English",
+    "description.title": "The free, fun, and effective way to learn a language!",
+    "get_started.btn": "Get started",
+    "have_account.btn": "I already have an account"
+  },
+  "course": {
+    "course_de.txt": "German",
+    "course_en.txt": "English",
+    "course_es.txt": "Spanish",
+    "course_fr.txt": "French",
+    "course_it.txt": "Italian",
+    "course_ja.txt": "Japanese",
+    "course_ko.txt": "Korean",
+    "course_la.txt": "Latin",
+    "course_ru.txt": "Russian",
+    "course_vi.txt": "Vietnamese",
+    "course_zh.txt": "Chinese"
+  },
+  "signIn": {
+    "title": "Log in",
+    "sign_up.btn": "Sign up",
+    "email_placeholder.txt": "Email or username",
+    "password_placeholder.txt": "Password",
+    "forgot_password.txt": "FORGOT?",
+    "log_in.btn": "Log in",
+    "or.txt": "OR",
+    "note_1.txt": "By signing in to Duolingo, you agree to our Terms and Privacy Policy.",
+    "note_2.txt": "This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and Terms of Service apply."
+  },
+  "signUp": {
+    "title": "Create your profile",
+    "sign_in.btn": "Login",
+    "age_placeholder.txt": "Age",
+    "age_note.txt": "Providing your age ensures you get the right Duolingo experience. For more details, please visit our Privacy Policy.",
+    "name_placeholder.txt": "Name (optional)",
+    "email_placeholder.txt": "Email",
+    "password_placeholder.txt": "Password",
+    "sign_up.btn": "Create account",
+    "or.txt": "OR",
+    "note_1.txt": "By signing in to Duolingo, you agree to our Terms and Privacy Policy.",
+    "note_2.txt": "This site is protected by reCAPTCHA Enterprise and the GooglePrivacy Policy and Terms of Service apply."
+  },
+  "sidebar": {
+    "learn.btn": "Learn",
+    "leaderboards.btn": "Leaderboards",
+    "quests.btn": "Quests",
+    "shop.btn": "Shop",
+    "profile.btn": "Profile",
+    "more.btn": "More"
+  }
 }

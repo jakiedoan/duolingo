@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        mobile: '320px',
+        tablet: '700px',
+        laptop: '1024px',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -90,6 +95,25 @@ const config = {
           default: 'rgb(var(--color-wolf))',
           light: 'rgb(var(--color-wolf-always-light))',
         },
+        cardinal: {
+          default: 'rgb(var(--color-cardinal))',
+          light: 'rgb(var(--color-cardinal-always-light))',
+        },
+        fox: {
+          default: 'rgb(var(--color-fox))',
+          light: 'rgb(var(--color-fox-always-light))',
+        },
+        'guinea-pig': {
+          default: 'rgb(var(--color-guinea-pig))',
+          light: 'rgb(var(--color-guinea-pig-always-light))',
+        },
+        'fire-ant': {
+          default: 'rgb(var(--color-fire-ant))',
+          light: 'rgb(var(--color-fire-ant-always-light))',
+        },
+        'gilded-secondary': 'rgb(var(--color-gilded-secondary))',
+        'gold-shine': 'rgb(var(--color-gold-shine))',
+        bee: 'rgb(var(--color-bee))',
         facebook: 'rgb(var(--color-facebook))',
         google: 'rgb(var(--color-google))',
       },
@@ -111,6 +135,8 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        loading:
+          'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite, bounce 1.5s infinite',
       },
     },
   },

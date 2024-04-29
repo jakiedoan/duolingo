@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+:root {
+  @apply h-full;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -61,6 +67,21 @@
     --color-wolf: 119 119 119;
     --color-wolf-always-light: 119 119 119;
 
+    --color-cardinal: 255 75 75;
+    --color-cardinal-always-light: 255 75 75;
+
+    --color-fox: 255 150 0;
+    --color-fox-always-light: 255 150 0;
+
+    --color-guinea-pig: 215 148 51;
+    --color-guinea-pig-always-light: 205 121 0;
+
+    --color-fire-ant: 234 43 43;
+    --color-fire-ant-always-light: 234 43 43;
+
+    --color-gilded-secondary: 231 166 1;
+    --color-gold-shine: 255 231 0;
+    --color-bee: 255 200 0;
     --color-facebook: 59 89 152;
     --color-google: 66 133 244;
   }
@@ -103,6 +124,11 @@
     --color-eel: 241 247 251;
     --color-hare: 82 101 109;
     --color-wolf: 220 230 236;
+    --color-cardinal: 238 85 85;
+    --color-fox: 255 171 51;
+    --color-bee: 255 199 0;
+    --color-guinea-pig: 215 148 51;
+    --color-fire-ant: 216 72 72;
 
     --color-facebook: 45 67 115;
   }

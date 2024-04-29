@@ -1,0 +1,54 @@
+{
+  "metadata": "듀오링고 - 세계 최고의 언어 학습 방법",
+  "intro": {
+    "language.btn": "사이트 언어: 한⁠국⁠어",
+    "description.title": "재미있고 효과적인 무료 언어 학습!",
+    "get_started.btn": "시작하기",
+    "have_account.btn": "계정이 이미 있습니다"
+  },
+  "course": {
+    "course_de.txt": "German",
+    "course_en.txt": "영어",
+    "course_es.txt": "Spanish",
+    "course_fr.txt": "French",
+    "course_it.txt": "Italian",
+    "course_ja.txt": "Japanese",
+    "course_ko.txt": "Korean",
+    "course_la.txt": "Latin",
+    "course_ru.txt": "Russian",
+    "course_vi.txt": "Vietnamese",
+    "course_zh.txt": "Chinese"
+  },
+  "signIn": {
+    "title": "로그인",
+    "sign_up.btn": "회원가입",
+    "email_placeholder.txt": "이메일 또는 아이디",
+    "password_placeholder.txt": "비밀번호",
+    "forgot_password.txt": "비밀번호를 잊으셨나요?",
+    "log_in.btn": "로그인하기",
+    "or.txt": "또는",
+    "note_1.txt": "듀오링고에 가입함으로써 듀오링고의 이용 약관 및 개인정보처리방침에 동의하게 됩니다.",
+    "note_2.txt": "이 사이트는 reCAPTCHA에 의해 보호되며, Google 개인정보보호정책 및 서비스 이용약관이 적용됩니다."
+  },
+  "signUp": {
+    "title": "프로필 만들기",
+    "sign_in.btn": "로그인",
+    "age_placeholder.txt": "나이",
+    "age_note.txt": "나이를 입력하면 본인에게 맞는 듀오링고 환경을 이용할 수 있습니다. 자세한 내용은 개인정보처리방침에서 확인하세요.",
+    "name_placeholder.txt": "성명 (선택 항목)",
+    "email_placeholder.txt": "이메일",
+    "password_placeholder.txt": "비밀번호",
+    "sign_up.btn": "계정 생성하기",
+    "or.txt": "또는",
+    "note_1.txt": "듀오링고에 가입함으로써 듀오링고의 이용 약관 및 개인정보처리방침에 동의하게 됩니다.",
+    "note_2.txt": "이 사이트는 reCAPTCHA에 의해 보호되며, Google 개인정보보호정책 및 서비스 이용약관이 적용됩니다."
+  },
+  "sidebar": {
+    "learn.btn": "학습",
+    "leaderboards.btn": "리더보드",
+    "quests.btn": "퀘스트",
+    "shop.btn": "스토어",
+    "profile.btn": "프로필",
+    "more.btn": "더 보기"
+  }
+}

@@ -1,9 +1,15 @@
-import { authMiddleware } from '@clerk/nextjs';
+import { authenticationMiddleware } from './middlewares/authentication';
+import { chain } from './middlewares/chain';
+import { languageMiddleware } from './middlewares/language';
 
-export default authMiddleware({
-  publicRoutes: ['/'],
-});
+// export function middleware(request: NextRequest) {
+//   return i18nRouter(request, i18nConfig);
+// }
+export default chain([languageMiddleware]);
 
 export const config = {
-  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+  // matcher: '/:lng*'
+  matcher: [
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)',
+  ],
 };

@@ -1,0 +1,54 @@
+{
+  "metadata": "Duolingo - 世界No.1の外国語学習法",
+  "intro": {
+    "language.btn": "サイトの言語 : 日本語",
+    "description.title": "無料で楽しく外国語を学ぼう",
+    "get_started.btn": "スタート",
+    "have_account.btn": "ログイン"
+  },
+  "course": {
+    "course_de.txt": "German",
+    "course_en.txt": "英語",
+    "course_es.txt": "Spanish",
+    "course_fr.txt": "フランス語",
+    "course_it.txt": "Italian",
+    "course_ja.txt": "Japanese",
+    "course_ko.txt": "韓国語",
+    "course_la.txt": "Latin",
+    "course_ru.txt": "Russian",
+    "course_vi.txt": "Vietnamese",
+    "course_zh.txt": "中国語"
+  },
+  "signIn": {
+    "title": "ログイン",
+    "sign_up.btn": "登録",
+    "email_placeholder.txt": "Eメールまたはユーザー名",
+    "password_placeholder.txt": "パスワード",
+    "forgot_password.txt": "お忘れですか?",
+    "log_in.btn": "ログイン",
+    "or.txt": "または",
+    "note_1.txt": "ログインするとDuolingoの利用規約とプライバシーポリシーに同意したことになります。",
+    "note_2.txt": "このサイトはreCAPTCHA Enterpriseにより保護されており、Googleのプライバシー ポリシーと利用規約が適用されます。"
+  },
+  "signUp": {
+    "title": "アカウントを作ろう！",
+    "sign_in.btn": "ログイン",
+    "age_placeholder.txt": "年齢",
+    "age_note.txt": "年齢を入力することにより、適切なDuolingo体験をお楽しみいただけます。詳細については、プライバシーポリシーをご覧ください。",
+    "name_placeholder.txt": "名前 (任意)",
+    "email_placeholder.txt": "メールアドレス",
+    "password_placeholder.txt": "パスワード",
+    "sign_up.btn": "アカウントを作成 (無料)",
+    "or.txt": "または",
+    "note_1.txt": "ログインするとDuolingoの利用規約とプライバシーポリシーに同意したことになります。",
+    "note_2.txt": "このサイトはreCAPTCHA Enterpriseにより保護されており、Googleのプライバシー ポリシーと利用規約が適用されます。"
+  },
+  "sidebar": {
+    "learn.btn": "レッスン",
+    "leaderboards.btn": "ランキング",
+    "quests.btn": "クエスト",
+    "shop.btn": "ショップ",
+    "profile.btn": "プロフィール",
+    "more.btn": "もっと見る"
+  }
+}

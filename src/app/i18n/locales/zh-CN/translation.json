@@ -1,0 +1,54 @@
+{
+  "metadata": "多邻国 - 全球数亿语言学习者的口碑选择",
+  "intro": {
+    "language.btn": "网站语言 中文",
+    "description.title": "多邻国学外语，学会、玩会，还免费!",
+    "get_started.btn": "开始",
+    "have_account.btn": "已有帐户"
+  },
+  "course": {
+    "course_de.txt": "German",
+    "course_en.txt": "英语",
+    "course_es.txt": "Spanish",
+    "course_fr.txt": "法语",
+    "course_it.txt": "Italian",
+    "course_ja.txt": "日语",
+    "course_ko.txt": "Korean",
+    "course_la.txt": "Latin",
+    "course_ru.txt": "Russian",
+    "course_vi.txt": "Vietnamese",
+    "course_zh.txt": "中文"
+  },
+  "signIn": {
+    "title": "登录",
+    "sign_up.btn": "注册",
+    "email_placeholder.txt": "邮箱或用户名",
+    "password_placeholder.txt": "密码",
+    "forgot_password.txt": "忘记密码?",
+    "log_in.btn": "登录",
+    "or.txt": "或者",
+    "note_1.txt": "登录即视为你已接受我们的服务条款与隐私政策。",
+    "note_2.txt": "该网站受 reCAPTCHA Enterprise 保护。Google 隐私政策及服务条款也同时适用。"
+  },
+  "signUp": {
+    "title": "创建档案",
+    "sign_in.btn": "登录",
+    "age_placeholder.txt": "年龄",
+    "age_note.txt": "告诉我们你的真实年龄，让我们为你打造一个更合适的多邻国学习体验。更多详情，请访问隐私政策。",
+    "name_placeholder.txt": "姓名 (选填)",
+    "email_placeholder.txt": "邮箱",
+    "password_placeholder.txt": "密码",
+    "sign_up.btn": "创建帐户",
+    "or.txt": "或者",
+    "note_1.txt": "登录即视为你已接受我们的服务条款与隐私政策。",
+    "note_2.txt": "该网站受 reCAPTCHA Enterprise 保护。Google 隐私政策及服务条款也同时适用。"
+  },
+  "sidebar": {
+    "learn.btn": "学习",
+    "leaderboards.btn": "排行榜",
+    "quests.btn": "特别任务",
+    "shop.btn": "宝石小店",
+    "profile.btn": "个人档案",
+    "more.btn": "更多"
+  }
+}

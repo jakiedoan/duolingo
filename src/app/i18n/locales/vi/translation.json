@@ -1,0 +1,54 @@
+{
+  "metadata": "Duolingo - Cách học ngoại ngữ tốt nhất thế giới",
+  "intro": {
+    "language.btn": "Ngôn ngữ hiển thị: Tiếng Việt",
+    "description.title": "Cách học ngôn ngữ miễn phí, vui nhộn và hiệu quả!",
+    "get_started.btn": "Bắt đầu",
+    "have_account.btn": "Tôi đã có tài khoản"
+  },
+  "course": {
+    "course_de.txt": "German",
+    "course_en.txt": "Tiếng Anh",
+    "course_es.txt": "Spanish",
+    "course_fr.txt": "French",
+    "course_it.txt": "Italian",
+    "course_ja.txt": "Japanese",
+    "course_ko.txt": "Korean",
+    "course_la.txt": "Latin",
+    "course_ru.txt": "Russian",
+    "course_vi.txt": "Vietnamese",
+    "course_zh.txt": "Tiếng Hoa"
+  },
+  "signIn": {
+    "title": "Đăng nhập",
+    "sign_up.btn": "Đăng ký",
+    "email_placeholder.txt": "Email hoặc tên đăng nhập",
+    "password_placeholder.txt": "Mật khẩu",
+    "forgot_password.txt": "QUÊN?",
+    "log_in.btn": "Đăng nhập",
+    "or.txt": "HOẶC",
+    "note_1.txt": "Khi đăng ký trên Duolingo, bạn đã đồng ý với Các chính sách và Chính sách bảo mật của chúng tôi.",
+    "note_2.txt": "Trang này được bảo vệ bởi tập đoàn reCAPTCHA và theo Chính sách bảo mật và Điều khoản dịch vụ của Google."
+  },
+  "signUp": {
+    "title": "Tạo hồ sơ",
+    "sign_in.btn": "Đăng nhập",
+    "age_placeholder.txt": "Tuổi",
+    "age_note.txt": "Để có trải nghiệm Duolingo phù hợp nhất hãy cung cấp tuổi của bạn. Để biết thêm chi tiết, vui lòng truy cập trang Chính sách quyền riêng tư của chúng tôi.",
+    "name_placeholder.txt": "Tên (tùy chọn)",
+    "email_placeholder.txt": "Email",
+    "password_placeholder.txt": "Mật khẩu",
+    "sign_up.btn": "Tạo tài khoản",
+    "or.txt": "HOẶC",
+    "note_1.txt": "Khi đăng ký trên Duolingo, bạn đã đồng ý với Các chính sách và Chính sách bảo mật của chúng tôi.",
+    "note_2.txt": "Trang này được bảo vệ bởi tập đoàn reCAPTCHA và theo Chính sách bảo mật và Điều khoản dịch vụ của Google."
+  },
+  "sidebar": {
+    "learn.btn": "Học",
+    "leaderboards.btn": "Bảng xếp hạng",
+    "quests.btn": "Nhiệm vụ",
+    "shop.btn": "Cửa hàng",
+    "profile.btn": "Hồ sơ",
+    "more.btn": "Xem thêm"
+  }
+}

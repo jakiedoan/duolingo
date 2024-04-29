@@ -13,27 +13,27 @@ const buttonVariants = cva(
           'bg-transparent hover:brightness-90 border-swan-default border-2 border-b-4',
         noOutline: 'bg-transparent hover:brightness-90 text-hare-light',
         primary:
-          'bg-macaw-default text-primary-foreground hover:brightness-110 border-bea-secondary border-b-4 active:border-b-0',
+          'bg-macaw-default text-snow-default hover:brightness-110 border-bea-secondary border-b-4 active:border-b-0',
         primaryOutline:
           'text-macaw-default hover:brightness-90 border-swan-default border-2 border-b-4',
         secondary:
-          'bg-owl-default text-primary-foreground hover:brightness-110 border-tree-frog-default border-b-4 active:border-b-0',
+          'bg-owl-default text-snow-default hover:brightness-110 border-tree-frog-default border-b-4 active:border-b-0',
         secondaryOutline:
           'text-owl-default hover:brightness-90 border-swan-default border-2 border-b-4',
         danger:
-          'bg-rose-500 text-primary-foreground hover:brightness-110 border-rose-600 border-b-4 active:border-b-0',
+          'bg-rose-500 text-snow-default hover:brightness-110 border-rose-600 border-b-4 active:border-b-0',
         dangerOutline:
           'text-rose-500 hover:brightness-90 border-swan-default border-2 border-b-4',
         super:
-          'bg-indigo-500 text-primary-foreground hover:brightness-110 border-indigo-600 border-b-4 active:border-b-0',
+          'bg-indigo-500 text-snow-default hover:brightness-110 border-indigo-600 border-b-4 active:border-b-0',
         superOutline:
           'text-indigo-500 hover:brightness-90 border-swan-default border-2 border-b-4',
         ghost:
           'bg-transparent text-slate-500 border-transparent border-0 hover:brightness-110',
         sidebar:
-          'bg-transparent text-slate-500 border-2 border-transparent hover:brightness-110 transition-none',
+          'bg-transparent text-wolf-default border-2 border-transparent hover:brightness-110 transition-none',
         sidebarOutline:
-          'bg-sky-500/15 text-sky-500 border-sky-300 border-2 hover:bg-sky-500/20 transition-none',
+          'bg-macaw-default/15 text-macaw-default border-macaw-default/50 border-2 hover:bg-macaw-default/20 transition-none',
       },
       size: {
         default: 'h-11 px-4 py-2',
