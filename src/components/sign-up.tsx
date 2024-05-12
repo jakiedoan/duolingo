@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { useSignIn, useSignUp } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { TFunction } from 'i18next';
 import { Button } from '@/components/ui/button';

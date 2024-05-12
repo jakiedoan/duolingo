@@ -3,13 +3,8 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, {  } from 'react';
 import SidebarItem from '@/components/sidebar-item';
-import { ClerkLoaded, ClerkLoading, UserButton } from '@clerk/nextjs';
-import { Ellipsis } from 'lucide-react';
-import { Button } from './ui/button';
-import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '../../tailwind.config';
 import { useWindowDimension } from '@/utils/hooks/window-dimension';
 import { TFunction } from 'i18next';
 import { useUser } from '@/utils/provider/user';
