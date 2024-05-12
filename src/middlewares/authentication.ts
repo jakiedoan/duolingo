@@ -1,6 +1,5 @@
 import acceptLanguage from 'accept-language';
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
-// import { getToken } from 'next-auth/jwt';
 import { CustomMiddleware } from './chain';
 import { locales } from '@/app/i18n/config';
 import { cookies } from 'next/headers';
