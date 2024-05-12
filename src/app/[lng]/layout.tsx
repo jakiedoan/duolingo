@@ -1,15 +1,14 @@
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import '../globals.css';
-import { useServerTranslation } from '../i18n/server';
+import { serverTranslation } from '../i18n/server';
 import { TanstackProvider } from '@/utils/provider/tanstack';
 import { SessionProvider } from '@/utils/provider/session';
 import { locales } from '../i18n/config';
 import { ThemeProvider } from 'next-themes';
 import { cookies } from 'next/headers';
 import { UserProvider } from '@/utils/provider/user';
-import { decrypt, encrypt, getSession } from '@/lib/auth';
-import { User } from '@prisma/client';
+import { getSession } from '@/lib/auth';
 
 const font = Nunito({ subsets: ['latin'] });
 
@@ -30,7 +29,7 @@ export async function generateMetadata({
   // read route params
   const lng = params.lng;
 
-  const { t } = await useServerTranslation(lng);
+  const { t } = await serverTranslation(lng);
 
   return {
     title: t('metadata'),
