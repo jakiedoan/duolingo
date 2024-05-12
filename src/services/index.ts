@@ -1,15 +1,44 @@
+import { defaultLocale } from './../app/i18n/config';
 import { useCallback, useState } from 'react';
 import axios, { AxiosError } from 'axios';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  QueryClient,
+  QueryKey,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
+import { useSession } from '@/utils/provider/session';
 
 const ROOT_URL = process.env.NEXT_PUBLIC_DATA_SOURCE_URL;
 
-export const useFetchQuery = <T>(queryKey: string, queryUrl: string) => {
+const axiosDefaultConfig = {
+  headers: { 'Content-Type': 'application/json' },
+};
+
+const axiosAuthorizeConfig = (token: string) => {
+  // const { token } = useSession();
+  return {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+};
+
+export const useFetchQuery = <T>(
+  queryKey: string,
+  queryUrl: string,
+  authorize: boolean
+) => {
+  const { token } = useSession();
+
   async function queryFunction() {
     const result = await axios
-      .get(ROOT_URL + queryUrl, {
-        headers: { 'Content-Type': 'application/json' },
-      })
+      .get(
+        ROOT_URL + queryUrl,
+        authorize ? axiosAuthorizeConfig(token) : axiosDefaultConfig
+      )
       .then((response) => response.data.data);
 
     return result;
@@ -27,65 +56,75 @@ export const useFetchQuery = <T>(queryKey: string, queryUrl: string) => {
 export const usePostQuery = <BodyData>(
   queryKey: string,
   query: string,
-  onSuccessCallback?: () => void
+  authorize: boolean,
+  onSuccessCallback: () => Promise<void> | null
+  // token?: string
 ) => {
+  const { token } = useSession();
+
   const queryClient = useQueryClient();
   const [data, setData] = useState<any>();
   const [error, setError] = useState<any>();
 
   const post = useCallback(
     async (data: BodyData) => {
-      const result = await axios.post(ROOT_URL + query, data, {
-        headers: { 'Content-Type': 'application/json' },
-      });
-      // .then((response) => {
-      //   response.data.data;
-      //   // setData(response.data.data);
-      // }),
-
-      return result;
+      const response = await axios.post(
+        ROOT_URL + query,
+        data,
+        authorize ? axiosAuthorizeConfig(token) : axiosDefaultConfig
+      );
+      return response.data.data;
     },
     [query]
   );
 
-  const { isPending, mutate } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: post,
+
     onSuccess: (data) => {
       setData(data);
-      onSuccessCallback!();
+      onSuccessCallback();
       queryClient.invalidateQueries({ queryKey: [queryKey] });
     },
+
     onError: (error: AxiosError) => {
       setError(error.response);
     },
   });
 
-  return { isPending, error, mutate, data };
+  return { mutateAsync, isPending, error, data };
 };
 
-export const usePutQuery = <BodyData>(queryKey: string, query: string) => {
+export const usePutQuery = <BodyData>(
+  queryKey: string,
+  query: string,
+  authorize: boolean
+) => {
   const queryClient = useQueryClient();
+
+  const { token } = useSession();
 
   const edit = useCallback(
     async (data: BodyData) => {
       await axios
-        .put(ROOT_URL + query, {
-          data: data,
-          headers: { 'Content-Type': 'application/json' },
-        })
+        .put(
+          ROOT_URL + query,
+          data,
+          authorize ? axiosAuthorizeConfig(token) : axiosDefaultConfig
+        )
         .then((response) => response.data.data);
     },
     [query]
   );
 
-  const { isPending, error, mutate } = useMutation({
+  const { isPending, error, mutateAsync } = useMutation({
     mutationFn: edit,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [queryKey] });
     },
   });
 
-  return { isPending, error, mutate };
+  return { isPending, error, mutateAsync };
 };
 
 export const useDeleteQuery = <BodyData>(queryKey: string, query: string) => {
@@ -113,4 +152,7 @@ export const useDeleteQuery = <BodyData>(queryKey: string, query: string) => {
   return { isPending, error, mutate };
 };
 
-export const useAsyncPostQuery = () => {};
+// export const useAsyncPostQuery = async () => {
+//   const queryClient = new QueryClient()
+
+// };

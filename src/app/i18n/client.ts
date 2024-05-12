@@ -9,7 +9,7 @@ import {
 import { useCookies } from 'react-cookie';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { i18nConfig } from './config';
+import { locales } from './config';
 // import { getOptions, languages, cookieName } from './settings';
 
 const runsOnServerSide = typeof window === 'undefined';
@@ -28,7 +28,7 @@ i18next
     detection: {
       order: ['path', 'htmlTag', 'cookie', 'navigator'],
     },
-    preload: runsOnServerSide ? i18nConfig.locales : [],
+    preload: runsOnServerSide ? locales : [],
   });
 
 export function useClientTranslation(lng: string) {

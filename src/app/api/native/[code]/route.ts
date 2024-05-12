@@ -15,11 +15,6 @@ export async function GET(request: NextRequest, { params }: { params: Props }) {
     },
   });
 
-  // return NextResponse.json({
-  //   status: 'Success.',
-  //   data: native,
-  // });
-
   let json_response = {
     status: 'Success.',
     data: native,

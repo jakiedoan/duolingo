@@ -50,5 +50,9 @@
     "shop.btn": "스토어",
     "profile.btn": "프로필",
     "more.btn": "더 보기"
+  },
+  "progress": {
+    "my_courses.txt": "学習中のコース",
+    "new_course.btn": "新しいコースを追加"
   }
 }

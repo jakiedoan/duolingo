@@ -50,5 +50,9 @@
     "shop.btn": "宝石小店",
     "profile.btn": "个人档案",
     "more.btn": "更多"
+  },
+  "progress": {
+    "my_courses.txt": "学習中のコース",
+    "new_course.btn": "新しいコースを追加"
   }
 }

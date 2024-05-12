@@ -30,7 +30,7 @@ function Footer({
           <CarouselContent>
             {nativeCourses &&
               nativeCourses.courses.map((course) => (
-                <CarouselItem className='basis-1/6'>
+                <CarouselItem key={course.id} className='basis-1/6'>
                   <Button size='lg' variant='ghost'>
                     <Image
                       src={course.image_src}

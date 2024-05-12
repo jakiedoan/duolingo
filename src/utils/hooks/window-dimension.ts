@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { WindowDimension } from '@/utils/types';
 
 export function useWindowDimension() {
   const [windowDimension, setWindowDimension] = useState<WindowDimension>({

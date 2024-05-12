@@ -21,7 +21,9 @@ import {
 } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CircleAlert, Dot, Ellipsis } from 'lucide-react';
+import { createToken } from '@/auth/token';
+import { useSession } from '@/utils/provider/session';
+import Loading from '@/components/loading';
 
 type AccountProps = {
   age: number | null;
@@ -52,21 +54,25 @@ export function SignUp({
   // const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
 
-  // const [account, setAccount] = useState<z.infer<typeof formSchema>>({
-  //   age: undefined,
-  //   name: undefined,
-  //   email: undefined,
-  //   password: undefined,
-  // });
+  const { setToken } = useSession();
 
   const {
-    mutate: post,
+    mutateAsync: post,
     isPending,
     error,
     data,
-  } = usePostQuery<z.infer<typeof formSchema>>('sign-up', 'sign-up', () =>
-    router.push('/learn')
+  } = usePostQuery<z.infer<typeof formSchema>>(
+    'sign-up',
+    'sign-up',
+    false,
+    () => onSuccessCallback()
   );
+
+  const onSuccessCallback = async (): Promise<void> => {
+    await createToken(data);
+    setToken(data?.token);
+    // router.push('/learn');
+  };
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -89,49 +95,6 @@ export function SignUp({
       password: password,
     });
   };
-
-  // const handleSignUp = async (account: AccountProps) => {
-  //   if (!isLoaded || account.email == null || account.password == null) {
-  //     return;
-  //   }
-
-  //   try {
-  //     const completeSignUp = await signUp.create({
-  //       lastName: account.name == null ? undefined : account.name,
-  //       emailAddress: account.email,
-  //       password: account.password,
-  //       unsafeMetadata: {
-  //         age: account.age,
-  //       },
-  //     });
-
-  //     if (completeSignUp.status !== 'complete') {
-  //       /*  investigate the response, to see if there was an error
-  //        or if the user needs to complete more steps.*/
-  //       console.log(JSON.stringify(completeSignUp, null, 2));
-  //     }
-  //     if (completeSignUp.status === 'complete') {
-  //       // send the email.
-  //       signUp.createEmailLinkFlow();
-
-  //       await setActive({ session: signUp.createdSessionId });
-  //       router.push('/learn');
-  //     }
-
-  //     // change the UI to our pending section.
-  //     // setPendingVerification(true);
-  //   } catch (err: any) {
-  //     console.log(err);
-  //     // setClerkError(err.errors[0].message);
-  //   }
-  // };
-
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setAccount({
-  //     ...account,
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
 
   const openSignIn = () => {
     setIsSignIn(true);
@@ -248,27 +211,7 @@ export function SignUp({
                   size='lg'
                   className='w-full'
                 >
-                  {isPending ? (
-                    <div className='flex gap-2'>
-                      <FontAwesomeIcon
-                        icon={faCircle}
-                        className='text-swan-default animate-loading'
-                        size='xs'
-                      />
-                      <FontAwesomeIcon
-                        icon={faCircle}
-                        className='text-swan-default animate-loading [animation-delay:-0.3s]'
-                        size='xs'
-                      />
-                      <FontAwesomeIcon
-                        icon={faCircle}
-                        className='text-swan-default animate-loading [animation-delay:-0.15s]'
-                        size='xs'
-                      />
-                    </div>
-                  ) : (
-                    t('signUp.sign_up.btn')
-                  )}
+                  {isPending ? <Loading /> : t('signUp.sign_up.btn')}
                 </Button>
               </form>
             </Form>

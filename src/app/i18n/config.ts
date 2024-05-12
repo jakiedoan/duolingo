@@ -1,7 +1,7 @@
-export const i18nConfig = {
-  locales: ['en', 'vi', 'ja', 'ko', 'zh-CN'],
-  defaultLocale: 'en',
-};
+// export const i18nConfig = {
+//   locales: ['en', 'vi', 'ja', 'ko', 'zh-CN'],
+//   defaultLocale: 'en',
+// };
 
 export const locales = ['en', 'vi', 'ja', 'ko', 'zh-CN'];
 export const defaultLocale = 'en';

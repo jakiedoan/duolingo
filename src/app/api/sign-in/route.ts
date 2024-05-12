@@ -1,3 +1,4 @@
+import { encrypt } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { compare } from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
@@ -17,6 +18,14 @@ export async function POST(request: NextRequest) {
     const user = await prisma.user.findUnique({
       where: {
         email: email,
+      },
+      include: {
+        courses: true,
+        progress: {
+          include: {
+            active_course: true,
+          },
+        },
       },
     });
 
@@ -46,9 +55,11 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    const token = await encrypt({ user });
+
     let json_response = {
       status: 'Success.',
-      data: user,
+      data: { token },
     };
 
     return new NextResponse(JSON.stringify(json_response), {

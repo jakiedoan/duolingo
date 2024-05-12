@@ -1,13 +1,14 @@
 'use client';
 
-import MobileHeader from '@/components/mobile-header';
 import Sidebar from '@/components/sidebar';
 import React, { useEffect } from 'react';
-import { TFunction } from 'i18next';
-import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 import { useClientTranslation } from '../../i18n/client';
 import { useFetchQuery } from '@/services';
+import { useWindowDimension } from '@/utils/hooks/window-dimension';
+import { UserInfo } from '@/utils/types';
+import { useUser } from '@/utils/provider/user';
+import MobileSidebar from '@/components/mobile/sidebar';
+import MobileHeader from '@/components/mobile/header';
 
 function MainLayout({
   children,
@@ -18,32 +19,36 @@ function MainLayout({
 }>) {
   const { t } = useClientTranslation(lng);
 
+  const windowDimension = useWindowDimension();
 
-  // const {data: user} = useFetchQuery('user', 'user/')
+  const { user, setUser } = useUser();
 
-  const router = useRouter();
-  const { data: session } = useSession();
+  const { data: info } = useFetchQuery<UserInfo>(
+    'user_info',
+    `user/${user?.id}`,
+    true
+  );
 
   useEffect(() => {
-    // console.log(session)
-    if (!session) {
-      router.push('/');
-    }
-  }, []);
+    setUser(info!);
+  }, [info]);
 
   return (
     <>
-      {!session ? null : (
-        <>
-          <MobileHeader />
-          <Sidebar className='hidden tablet:flex' t={t} />
-          <main className='tablet:pl-[256px] h-full pt-[50px] tablet:pt-0'>
-            <div className='bg-snow-default max-w-[1056px] mx-auto pt-6 h-full'>
-              {children}
-            </div>
-          </main>
-        </>
+      {windowDimension.width! < 700 && (
+        <MobileHeader user={user!} t={t} lng={lng} />
       )}
+      <Sidebar
+        className='hidden tablet:flex tablet:items-center'
+        t={t}
+        lng={lng}
+      />
+      <main className='desktop:pl-[256px] tablet:pl-24 h-full pt-[50px] tablet:pt-0'>
+        <div className='bg-snow-default max-w-[1056px] mx-auto pt-6 h-full'>
+          {children}
+        </div>
+      </main>
+      <MobileSidebar lng={lng} t={t} />
     </>
   );
 }

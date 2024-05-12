@@ -21,7 +21,11 @@ const config = {
       screens: {
         mobile: '320px',
         tablet: '700px',
-        laptop: '1024px',
+        'tablet-mid': [{ max: '699px' }, { min: '700px', max: '1065px' }],
+        desktop: '1160px',
+      },
+      fontSize: {
+        base: '15px',
       },
       colors: {
         border: 'hsl(var(--border))',

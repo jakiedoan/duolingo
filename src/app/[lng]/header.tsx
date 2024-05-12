@@ -15,14 +15,6 @@ import { useRouter } from 'next/navigation';
 import { useFetchQuery } from '@/services';
 import { Native_Language } from '@prisma/client';
 
-// const siteLanguage = [
-//   { id: 'en', title: 'English', srcIcon: '/assets/flag/en.png' },
-//   { id: 'vi', title: 'Tiếng Việt', srcIcon: '/assets/flag/vietnamese.png' },
-//   { id: 'ja', title: '日本語', srcIcon: '/assets/flag/japanese.png' },
-//   { id: 'ko', title: '한국어', srcIcon: '/assets/flag/korean.png' },
-//   { id: 'zh-CN', title: '中文', srcIcon: '/assets/flag/chinese.png' },
-// ];
-
 type Props = {
   params: {
     lng: string;
@@ -35,13 +27,13 @@ function Header({ params, nativeList }: Props) {
 
   const { t } = useClientTranslation(params.lng);
 
-  const handleChangeLanguage = (id: string, code: string): void => {
+  const handleChangeLanguage = (code: string): void => {
     router.push(`/${code}`);
   };
 
   return (
     <header className='h-20 w-full px-4'>
-      <div className='laptop:max-w-screen-lg mx-auto flex items-center justify-between h-full'>
+      <div className='desktop:max-w-screen-lg mx-auto flex items-center justify-between h-full'>
         <div className='pt-8 pl-4 pb-7 flex items-center gap-x-3'>
           <div className='relative w-44 h-10'>
             <Image
@@ -61,14 +53,14 @@ function Header({ params, nativeList }: Props) {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align='end'
-            className='grid grid-cols-2 gap-2 w-[420px] p-4 rounded-xl'
+            className='grid grid-cols-2 gap-2 w-[420px] p-4 rounded-xl border-swan-light bg-snow-light text-wolf-light'
           >
             {nativeList &&
               nativeList.map((item) => (
                 <DropdownMenuItem
                   key={item.id}
-                  className='cursor-pointer'
-                  onClick={() => handleChangeLanguage(item.id, item.code)}
+                  className='cursor-pointer hover:bg-swan-light focus:bg-swan-light rounded-sm'
+                  onClick={() => handleChangeLanguage(item.code)}
                 >
                   <Image
                     src={item.image_src!}

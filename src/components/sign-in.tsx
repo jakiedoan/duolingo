@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { useSignIn } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { TFunction } from 'i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,7 +19,11 @@ import {
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useSession } from '@/utils/provider/session';
+import { createToken } from '@/auth/token';
+import { useUser } from '@/utils/provider/user';
+import Loading from '@/components/loading';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -36,39 +39,43 @@ export function SignIn({
   setIsSignUp: React.Dispatch<React.SetStateAction<boolean>>;
   t: TFunction;
 }) {
-  const {
-    mutate: post,
-    isPending,
-    error,
-    data,
-  } = usePostQuery<z.infer<typeof formSchema>>('sign-in', 'sign-in', () =>
-    onSuccessCallback()
-  );
   const router = useRouter();
 
-  const onSuccessCallback = () => {
-    console.log('successss');
-    console.log(data);
-    // router.push('/learn');
-  };
+  const { setToken } = useSession();
+
+  const {
+    data,
+    mutateAsync: post,
+    isPending,
+    error,
+  } = usePostQuery<z.infer<typeof formSchema>>(
+    'sign-in',
+    'sign-in',
+    false,
+    () => null
+  );
 
   const handleLogin = async (account: z.infer<typeof formSchema>) => {
     const { email, password } = account;
 
-    // post({ email: email, password: password });
+    try {
+      const signin = await post({
+        email,
+        password,
+      });
 
-    let res = await signIn('credentials', {
-      email: email,
-      password: password,
-      redirect: false,
-    });
-
-    if (res?.error) {
-      console.log(res.error);
-    } else {
-      console.log(res);
-      // router.push('/learn');
+      if (signin) {
+        onSuccessCallback(signin);
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  const onSuccessCallback = async (response: any): Promise<void> => {
+    await createToken(response);
+    setToken(response.token);
+    router.push('/learn');
   };
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -79,7 +86,7 @@ export function SignIn({
     },
   });
 
-  const openSignUp = () => {
+  const openSignUp = (): void => {
     setIsSignUp(true);
     setIsSignIn(false);
   };
@@ -112,6 +119,7 @@ export function SignIn({
               <form
                 onSubmit={form.handleSubmit(handleLogin)}
                 className='space-y-5 w-full'
+                noValidate
               >
                 {/* Email */}
                 <FormField
@@ -126,11 +134,11 @@ export function SignIn({
                           {...field}
                         />
                       </FormControl>
-                      {/* {error && error.status === 404 ? (
+                      {error && error.status === 404 ? (
                         <FormMessage>{error.data.message}</FormMessage>
                       ) : (
                         <FormMessage />
-                      )} */}
+                      )}
                     </FormItem>
                   )}
                 />
@@ -147,11 +155,11 @@ export function SignIn({
                           {...field}
                         />
                       </FormControl>
-                      {/* {error && error.status === 401 ? (
+                      {error && error.status === 401 ? (
                         <FormMessage>{error.data.message}</FormMessage>
                       ) : (
                         <FormMessage />
-                      )} */}
+                      )}
                     </FormItem>
                   )}
                 />
@@ -161,27 +169,7 @@ export function SignIn({
                   size='lg'
                   className='w-full'
                 >
-                  {isPending ? (
-                    <div className='flex gap-2'>
-                      <FontAwesomeIcon
-                        icon={faCircle}
-                        className='text-swan-default animate-loading'
-                        size='xs'
-                      />
-                      <FontAwesomeIcon
-                        icon={faCircle}
-                        className='text-swan-default animate-loading [animation-delay:-0.3s]'
-                        size='xs'
-                      />
-                      <FontAwesomeIcon
-                        icon={faCircle}
-                        className='text-swan-default animate-loading [animation-delay:-0.15s]'
-                        size='xs'
-                      />
-                    </div>
-                  ) : (
-                    t('signIn.log_in.btn')
-                  )}
+                  {isPending ? <Loading /> : t('signIn.log_in.btn')}
                 </Button>
               </form>
             </Form>

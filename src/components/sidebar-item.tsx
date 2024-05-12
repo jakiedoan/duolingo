@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { WindowDimension } from '@/utils/types';
 
 type Props = {
   label: string;
@@ -25,7 +26,7 @@ function SidebarItem({ label, iconSrc, href, windowDimension }: Props) {
 
   return (
     <>
-      {windowDimension.width! < 1024 ? (
+      {windowDimension.width! < 1160 ? (
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>

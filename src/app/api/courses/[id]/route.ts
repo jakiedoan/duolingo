@@ -1,10 +1,10 @@
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 
-type Props = { userId: string };
+type Props = { id: string };
 
 export async function GET(request: NextRequest, { params }: { params: Props }) {
-  const userId = params.userId;
+  const id = params.id;
 
   const authorizationToken = request.headers.get('authorization');
 
@@ -20,24 +20,16 @@ export async function GET(request: NextRequest, { params }: { params: Props }) {
     });
   }
 
-  const user = await prisma.user.findUnique({
+  const course = await prisma.courses.findUnique({
     where: {
-      id: userId,
-    },
-    include: {
-      courses: true,
-      progress: {
-        include: {
-          active_course: true,
-        },
-      },
+      id: id,
     },
   });
 
-  if (!user) {
+  if (!course) {
     let error_response = {
-      status: 'Failure.',
-      message: 'User not exist.',
+      status: 'Error.',
+      message: 'Course not found',
     };
 
     return new NextResponse(JSON.stringify(error_response), {
@@ -46,13 +38,8 @@ export async function GET(request: NextRequest, { params }: { params: Props }) {
     });
   }
 
-  let json_response = {
+  return NextResponse.json({
     status: 'Success.',
-    data: user,
-  };
-
-  return new NextResponse(JSON.stringify(json_response), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
+    data: course,
   });
 }

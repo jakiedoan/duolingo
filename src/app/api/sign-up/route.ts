@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { hash } from 'bcrypt';
 import { ZodError, z } from 'zod';
 import { NextRequest, NextResponse } from 'next/server';
+import { encrypt } from '@/lib/auth';
 
 const registerSchema = z.object({
   age: z.number().positive({ message: 'Please enter your real age.' }),
@@ -46,9 +47,13 @@ export async function POST(request: NextRequest) {
 
     const { password: newUserPassword, ...rest } = newUser;
 
+    const token = await encrypt({ rest });
+
+    // let data = { ...rest, token };
+
     let json_response = {
       status: 'Success.',
-      data: rest,
+      data: { token },
     };
 
     return new NextResponse(JSON.stringify(json_response), {

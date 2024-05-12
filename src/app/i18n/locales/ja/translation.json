@@ -50,5 +50,9 @@
     "shop.btn": "ショップ",
     "profile.btn": "プロフィール",
     "more.btn": "もっと見る"
+  },
+  "progress": {
+    "my_courses.txt": "学習中のコース",
+    "new_course.btn": "新しいコースを追加"
   }
 }

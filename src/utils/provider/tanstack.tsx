@@ -12,7 +12,7 @@ function TanstackProvider({ children }: any) {
     <>
       <QueryClientProvider client={client}>
         <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
-        <ReactQueryDevtools initialIsOpen={false} buttonPosition='top-left' />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );

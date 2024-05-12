@@ -9,7 +9,7 @@ type Props = {
 
 function Header({ title }: Props) {
   return (
-    <div className='sticky top-0 bg-snow-default pb-3 laptop:pt-[28px] laptop:mt-[28px] flex items-center justify-between border-b2 mb-5 text-wolf-default laptop:z-50'>
+    <div className='sticky top-0 bg-snow-default pb-3 desktop:pt-[28px] desktop:mt-[28px] flex items-center justify-between border-b2 mb-5 text-wolf-default desktop:z-50'>
       <Link href='/courses'>
         <Button>
           <ArrowLeft className='h-5 w-5 stroke-2 text-wolf-default' />

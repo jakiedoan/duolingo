@@ -50,5 +50,13 @@
     "shop.btn": "Shop",
     "profile.btn": "Profile",
     "more.btn": "More"
+  },
+  "progress": {
+    "my_courses.txt": "MY COURSES",
+    "new_course.btn": "Add a new course"
+  },
+  "courses": {
+    "title.txt": "Language Courses for English Speakers",
+    "select_language.btn": "I speak: English"
   }
 }

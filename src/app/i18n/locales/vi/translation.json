@@ -50,5 +50,9 @@
     "shop.btn": "Cửa hàng",
     "profile.btn": "Hồ sơ",
     "more.btn": "Xem thêm"
+  },
+  "progress": {
+    "my_courses.txt": "学習中のコース",
+    "new_course.btn": "新しいコースを追加"
   }
 }

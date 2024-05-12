@@ -14,16 +14,16 @@ datasource db {
 }
 
 model User {
-  id       String     @id @default(uuid())
+  id       String    @id @default(uuid())
   name     String?
-  username String?    @unique
-  email    String     @unique
+  username String?   @unique
+  email    String    @unique
   password String
   avatar   String?
   age      Int
-  super    Boolean    @default(false)
+  super    Boolean   @default(false)
   courses  Courses[]
-  progress Progress[]
+  progress Progress?
 }
 
 model Native_Language {
@@ -51,5 +51,5 @@ model Progress {
   gems             Int     @default(500)
   hearts           Int     @default(5)
   user             User    @relation(fields: [user_id], references: [id])
-  course           Courses @relation(fields: [active_course_id], references: [id])
+  active_course    Courses @relation(fields: [active_course_id], references: [id])
 }

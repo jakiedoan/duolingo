@@ -139,6 +139,6 @@ body,
     @apply border-border;
   }
   body {
-    @apply bg-snow-default text-eel-default;
+    @apply bg-snow-default text-eel-default text-base;
   }
 }
