@@ -1,4 +1,4 @@
-import { SignJWT, jwtVerify } from 'jose';
+import { SignJWT, base64url, jwtDecrypt, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 
 const key = new TextEncoder().encode(process.env.AUTH_SECRET);
@@ -18,8 +18,9 @@ export async function decrypt(input: string): Promise<any> {
   return payload;
 }
 
-export async function getSession() {
-  const session = cookies().get('sessionToken')?.value;
+export async function getSession(session: string) {
+  console.log(key)
+  // const session = cookies().get('sessionToken')?.value;
 
   if (!session) return;
 

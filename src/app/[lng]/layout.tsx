@@ -8,7 +8,7 @@ import { locales } from '../i18n/config';
 import { ThemeProvider } from 'next-themes';
 import { cookies } from 'next/headers';
 import { UserProvider } from '@/utils/provider/user';
-import { getSession } from '@/lib/auth';
+import { decrypt, getSession } from '@/lib/auth';
 
 const font = Nunito({ subsets: ['latin'] });
 
@@ -43,14 +43,14 @@ export async function generateStaticParams() {
 async function RootLayout({ children, params }: RootProps) {
   const initialToken = cookies().get('sessionToken')?.value;
 
-  const user = await getSession();
+  const initialUser = await getSession(initialToken!);
 
   return (
     <html lang={params.lng} suppressHydrationWarning>
       <body className={font.className}>
         <TanstackProvider>
           <SessionProvider initialToken={initialToken}>
-            <UserProvider initialUser={user?.user}>
+            <UserProvider initialUser={initialUser?.user}>
               <ThemeProvider enableSystem={true}>{children}</ThemeProvider>
             </UserProvider>
           </SessionProvider>

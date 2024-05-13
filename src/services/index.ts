@@ -57,8 +57,6 @@ export const usePostQuery = <BodyData>(
   queryKey: string,
   query: string,
   authorize: boolean,
-  onSuccessCallback: () => Promise<void> | null
-  // token?: string
 ) => {
   const { token } = useSession();
 
@@ -83,7 +81,6 @@ export const usePostQuery = <BodyData>(
 
     onSuccess: (data) => {
       setData(data);
-      onSuccessCallback();
       queryClient.invalidateQueries({ queryKey: [queryKey] });
     },
 

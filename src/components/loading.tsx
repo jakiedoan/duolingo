@@ -1,10 +1,15 @@
+import { cn } from '@/lib/utils';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-function Loading() {
+type Props = {
+  className?: string;
+};
+
+function Loading({ className }: Props) {
   return (
-    <div className='flex gap-2'>
+    <div className={cn('flex gap-2 w-full justify-center', className)}>
       <FontAwesomeIcon
         icon={faCircle}
         className='text-swan-default animate-loading'

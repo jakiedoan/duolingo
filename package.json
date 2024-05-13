@@ -41,6 +41,7 @@
     "i18next-resources-to-backend": "^1.2.1",
     "immer": "^10.0.4",
     "jose": "^5.2.4",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.368.0",
     "negotiator": "^0.6.3",
     "next": "^14.2.3",

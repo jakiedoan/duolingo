@@ -14,15 +14,17 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { useFetchQuery } from '@/services';
 import { Native_Language } from '@prisma/client';
+import Loading from '@/components/loading';
 
 type Props = {
   params: {
     lng: string;
   };
   nativeList: Native_Language[];
+  isPending: boolean;
 };
 
-function Header({ params, nativeList }: Props) {
+function Header({ params, nativeList, isPending }: Props) {
   const router = useRouter();
 
   const { t } = useClientTranslation(params.lng);
@@ -44,6 +46,7 @@ function Header({ params, nativeList }: Props) {
             />
           </div>
         </div>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant='noOutline' size='lg' className='p-0'>
@@ -51,11 +54,17 @@ function Header({ params, nativeList }: Props) {
               <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent
             align='end'
-            className='grid grid-cols-2 gap-2 w-[420px] p-4 rounded-xl border-swan-light bg-snow-light text-wolf-light'
+            className={`gap-2 w-[420px] p-4 rounded-xl border-swan-light bg-snow-light text-wolf-light ${
+              !isPending ? 'grid grid-cols-2' : 'flex'
+            }`}
           >
-            {nativeList &&
+            {isPending ? (
+              <Loading />
+            ) : (
+              nativeList &&
               nativeList.map((item) => (
                 <DropdownMenuItem
                   key={item.id}
@@ -71,7 +80,8 @@ function Header({ params, nativeList }: Props) {
                   />
                   <span>{item.title}</span>
                 </DropdownMenuItem>
-              ))}
+              ))
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

@@ -7,33 +7,27 @@ import React, {
   useState,
   Dispatch,
   SetStateAction,
+  PropsWithChildren,
 } from 'react';
 import { UserInfo } from '@/utils/types';
 
-type UserState = {
+type UserStore = {
   user: UserInfo | null;
-};
-
-type UserAction = {
   setUser: Dispatch<SetStateAction<UserInfo | null>>;
 };
 
-type UserStore = UserState & UserAction;
-
-export interface UserStoreProviderProps {
+type Props = {
   children: ReactNode;
   initialUser?: UserInfo | null;
-}
+};
+
 const UserContext = createContext<UserStore>({
   user: null,
   setUser: () => {},
 });
 
-export const UserProvider = ({
-  children,
-  initialUser = null,
-}: UserStoreProviderProps) => {
-  const [user, setUser] = useState(initialUser);
+export const UserProvider = ({ children, initialUser = null }: Props) => {
+  const [user, setUser] = useState<UserInfo | null>(initialUser);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

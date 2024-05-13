@@ -23,6 +23,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createToken } from '@/auth/token';
 import { useSession } from '@/utils/provider/session';
 import Loading from '@/components/loading';
+import { jwtDecode } from 'jwt-decode';
+import { useUser } from '@/utils/provider/user';
 
 type AccountProps = {
   age: number | null;
@@ -54,24 +56,14 @@ export function SignUp({
   const router = useRouter();
 
   const { setToken } = useSession();
+  const { setUser } = useUser();
 
   const {
     mutateAsync: post,
     isPending,
     error,
     data,
-  } = usePostQuery<z.infer<typeof formSchema>>(
-    'sign-up',
-    'sign-up',
-    false,
-    () => onSuccessCallback()
-  );
-
-  const onSuccessCallback = async (): Promise<void> => {
-    await createToken(data);
-    setToken(data?.token);
-    // router.push('/learn');
-  };
+  } = usePostQuery<z.infer<typeof formSchema>>('sign-up', 'sign-up', false);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -84,15 +76,31 @@ export function SignUp({
     },
   });
 
-  const handleSignUp = (account: z.infer<typeof formSchema>) => {
+  const onSuccessCallback = async (response: any) => {
+    await createToken(response);
+    setToken(response.token);
+    const userInfo: any = jwtDecode(response.token);
+    setUser(userInfo.user);
+    router.push('/learn');
+  };
+
+  const handleSignUp = async (account: z.infer<typeof formSchema>) => {
     const { age, name, email, password } = account;
 
-    post({
-      age: parseInt(age.toString()),
-      name: name != undefined ? name : undefined,
-      email: email,
-      password: password,
-    });
+    try {
+      const signup = await post({
+        age: parseInt(age.toString()),
+        name: name != undefined ? name : undefined,
+        email: email,
+        password: password,
+      });
+
+      if (signup) {
+        onSuccessCallback(signup);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const openSignIn = () => {

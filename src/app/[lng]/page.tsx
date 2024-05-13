@@ -13,6 +13,7 @@ import { useFetchQuery } from '@/services';
 import { Native_Language } from '@prisma/client';
 import { NativeCourses } from '@/utils/types';
 import { useSession } from '@/utils/provider/session';
+import Loading from '@/components/loading';
 
 const Header = dynamic(() => import('./header'), { ssr: false });
 
@@ -25,30 +26,30 @@ type Props = {
 export default function Home({ params }: Props) {
   const { t } = useClientTranslation(params.lng);
 
-  const { token } = useSession();
-
-  const router = useRouter();
-
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
   const [isSignIn, setIsSignIn] = useState<boolean>(false);
 
-  const {
-    data: nativeList,
-    error,
-    isPending,
-  } = useFetchQuery<Native_Language[]>('native', 'native', false);
+  const { data: nativeList, isPending: isNativePending } = useFetchQuery<
+    Native_Language[]
+  >('native', 'native', false);
 
-  const { data: nativeCourses } = useFetchQuery<NativeCourses>(
-    'native_courses',
-    `native/${params.lng}`,
-    false
-  );
+  const { data: nativeCourses, isPending: isCoursesPending } =
+    useFetchQuery<NativeCourses>(
+      'native_courses',
+      `native/${params.lng}`,
+      false
+    );
 
   return (
     <div className='min-h-screen flex flex-col bg-snow-light'>
       {!isSignIn || !isSignUp ? (
         <>
-          <Header params={params} nativeList={nativeList!} />
+          <Header
+            params={params}
+            nativeList={nativeList!}
+            isPending={isNativePending}
+          />
+
           <main className='flex flex-col flex-1 items-center justify-center'>
             <div className='max-w-[988px] mx-auto flex flex-col flex-1 w-full desktop:flex-row items-center justify-center p-4 gap-2'>
               <div className='relative w-[240px] h-[240px] tablet:w-[424px] tablet:h-[424px] mb-9 tablet:mb-0'>
@@ -82,7 +83,11 @@ export default function Home({ params }: Props) {
               </div>
             </div>
           </main>
-          <Footer t={t} nativeCourses={nativeCourses!} />
+          <Footer
+            t={t}
+            nativeCourses={nativeCourses!}
+            isPending={isCoursesPending}
+          />
         </>
       ) : null}
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
@@ -24,6 +24,8 @@ import { useSession } from '@/utils/provider/session';
 import { createToken } from '@/auth/token';
 import { useUser } from '@/utils/provider/user';
 import Loading from '@/components/loading';
+import { decrypt, getSession } from '@/lib/auth';
+import { jwtDecode } from 'jwt-decode';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -41,19 +43,15 @@ export function SignIn({
 }) {
   const router = useRouter();
 
-  const { setToken } = useSession();
+  const { token, setToken } = useSession();
+  const { setUser } = useUser();
 
   const {
     data,
     mutateAsync: post,
     isPending,
     error,
-  } = usePostQuery<z.infer<typeof formSchema>>(
-    'sign-in',
-    'sign-in',
-    false,
-    () => null
-  );
+  } = usePostQuery<z.infer<typeof formSchema>>('sign-in', 'sign-in', false);
 
   const handleLogin = async (account: z.infer<typeof formSchema>) => {
     const { email, password } = account;
@@ -72,9 +70,11 @@ export function SignIn({
     }
   };
 
-  const onSuccessCallback = async (response: any): Promise<void> => {
+  const onSuccessCallback = async (response: any) => {
     await createToken(response);
     setToken(response.token);
+    const userInfo: any = jwtDecode(response.token);
+    setUser(userInfo.user);
     router.push('/learn');
   };
 
