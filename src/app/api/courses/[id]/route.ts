@@ -29,7 +29,7 @@ export async function GET(request: NextRequest, { params }: { params: Props }) {
         include: {
           units: {
             include: {
-              lessons: true,
+              levels: true,
             },
             orderBy: {
               order: 'asc',
