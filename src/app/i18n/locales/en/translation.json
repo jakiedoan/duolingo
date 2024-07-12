@@ -58,5 +58,30 @@
   "courses": {
     "title.txt": "Language Courses for English Speakers",
     "select_language.btn": "I speak: English"
+  },
+  "learn": {
+    "section.txt": "Section",
+    "unit.txt": "Unit",
+
+    "ko": {
+      "section1": {
+        "unit1.txt": "Learn Korean vowels",
+        "unit2.txt": "Learn Korean consonants",
+        "unit3.txt": "Learn more consonants",
+        "unit4.txt": "Learn basic phrases",
+        "unit5.txt": "Name common objects",
+        "unit6.txt": "Talk about objects",
+        "unit7.txt": "Greet people",
+        "unit8.txt": "Learn basic sentences",
+        "unit9.txt": "Introduce yourself",
+        "unit10.txt": "Say where you're going",
+        "unit11.txt": "Say where people are",
+        "unit12.txt": "Talk about food",
+        "unit13.txt": "Describe your friends",
+        "unit14.txt": "Learn basic verbs",
+        "unit15.txt": "Give directions",
+        "unit16.txt": "Make suggestions"
+      }
+    }
   }
 }

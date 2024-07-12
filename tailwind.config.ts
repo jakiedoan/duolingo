@@ -28,98 +28,112 @@ const config = {
         base: '15px',
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
+        // border: 'hsl(var(--border))',
+        // input: 'hsl(var(--input))',
+        // ring: 'hsl(var(--ring))',
+        // background: 'hsl(var(--background))',
+        // foreground: 'hsl(var(--foreground))',
+        // primary: {
+        //   DEFAULT: 'hsl(var(--primary))',
+        //   foreground: 'hsl(var(--primary-foreground))',
+        // },
+        // secondary: {
+        //   DEFAULT: 'hsl(var(--secondary))',
+        //   foreground: 'hsl(var(--secondary-foreground))',
+        // },
+        // destructive: {
+        //   DEFAULT: 'hsl(var(--destructive))',
+        //   foreground: 'hsl(var(--destructive-foreground))',
+        // },
+        // muted: {
+        //   DEFAULT: 'hsl(var(--muted))',
+        //   foreground: 'hsl(var(--muted-foreground))',
+        // },
+        // accent: {
+        //   DEFAULT: 'hsl(var(--accent))',
+        //   foreground: 'hsl(var(--accent-foreground))',
+        // },
+        // popover: {
+        //   DEFAULT: 'hsl(var(--popover))',
+        //   foreground: 'hsl(var(--popover-foreground))',
+        // },
+        // card: {
+        //   DEFAULT: 'hsl(var(--card))',
+        //   foreground: 'hsl(var(--card-foreground))',
+        // },
 
         snow: {
-          default: 'rgb(var(--color-snow))',
-          light: 'rgb(var( --color-snow-always-light))',
+          DEFAULT: 'rgb(var(--color-snow) / <alpha-value>)',
+          light: 'rgb(var(--color-snow-always-light) / <alpha-value>)',
         },
         polar: {
-          default: 'rgb(var(--color-polar))',
-          light: 'rgb(var( --color-polar-always-light))',
+          DEFAULT: 'rgb(var(--color-polar) / <alpha-value>)',
+          light: 'rgb(var(--color-polar-always-light) / <alpha-value>)',
         },
         owl: {
-          default: 'rgb(var(--color-owl))',
-          light: 'rgb(var( --color-owl-always-light))',
+          DEFAULT: 'rgb(var(--color-owl) / <alpha-value>)',
+          light: 'rgb(var(--color-owl-always-light) / <alpha-value>)',
         },
         'tree-frog': {
-          default: 'rgb(var(--color-tree-frog))',
-          light: 'rgb(var(--color-tree-frog-always-light))',
+          DEFAULT: 'rgb(var(--color-tree-frog) / <alpha-value>)',
+          light: 'rgb(var(--color-tree-frog-always-light) / <alpha-value>)',
         },
         macaw: {
-          default: 'rgb(var(--color-macaw))',
-          light: 'rgb(var(--color-macaw-always-light))',
+          DEFAULT: 'rgb(var(--color-macaw) / <alpha-value>)',
+          light: 'rgb(var(--color-macaw-always-light) / <alpha-value>)',
         },
         swan: {
-          default: 'rgb(var(--color-swan))',
-          light: 'rgb(var(--color-swan-always-light))',
+          DEFAULT: 'rgb(var(--color-swan) / <alpha-value>)',
+          light: 'rgb(var(--color-swan-always-light) / <alpha-value>)',
         },
         eel: {
-          default: 'rgb(var(--color-eel))',
-          light: 'rgb(var(--color-eel-always-light))',
+          DEFAULT: 'rgb(var(--color-eel) / <alpha-value>)',
+          light: 'rgb(var(--color-eel-always-light) / <alpha-value>)',
         },
-        'bea-secondary': 'rgb(var(--color-bea-secondary))',
+        'bea-secondary': 'rgb(var(--color-bea-secondary) / <alpha-value>)',
         hare: {
-          default: 'rgb(var(--color-hare))',
-          light: 'rgb(var(--color-hare-always-light))',
+          DEFAULT: 'rgb(var(--color-hare) / <alpha-value>)',
+          light: 'rgb(var(--color-hare-always-light) / <alpha-value>)',
         },
         wolf: {
-          default: 'rgb(var(--color-wolf))',
-          light: 'rgb(var(--color-wolf-always-light))',
+          DEFAULT: 'rgb(var(--color-wolf) / <alpha-value>)',
+          light: 'rgb(var(--color-wolf-always-light) / <alpha-value>)',
         },
         cardinal: {
-          default: 'rgb(var(--color-cardinal))',
-          light: 'rgb(var(--color-cardinal-always-light))',
+          DEFAULT: 'rgb(var(--color-cardinal) / <alpha-value>)',
+          light: 'rgb(var(--color-cardinal-always-light) / <alpha-value>)',
         },
         fox: {
-          default: 'rgb(var(--color-fox))',
-          light: 'rgb(var(--color-fox-always-light))',
+          DEFAULT: 'rgb(var(--color-fox) / <alpha-value>)',
+          light: 'rgb(var(--color-fox-always-light) / <alpha-value>)',
         },
         'guinea-pig': {
-          default: 'rgb(var(--color-guinea-pig))',
-          light: 'rgb(var(--color-guinea-pig-always-light))',
+          DEFAULT: 'rgb(var(--color-guinea-pig) / <alpha-value>)',
+          light: 'rgb(var(--color-guinea-pig-always-light) / <alpha-value>)',
         },
         'fire-ant': {
-          default: 'rgb(var(--color-fire-ant))',
-          light: 'rgb(var(--color-fire-ant-always-light))',
+          DEFAULT: 'rgb(var(--color-fire-ant) / <alpha-value>)',
+          light: 'rgb(var(--color-fire-ant-always-light) / <alpha-value>)',
         },
-        'gilded-secondary': 'rgb(var(--color-gilded-secondary))',
-        'gold-shine': 'rgb(var(--color-gold-shine))',
-        bee: 'rgb(var(--color-bee))',
-        facebook: 'rgb(var(--color-facebook))',
-        google: 'rgb(var(--color-google))',
+
+        beetle: 'rgb(var(--color-beetle) / <alpha-value>)',
+        peacock: 'rgb(var(--color-peacock) / <alpha-value>)',
+        starfish: 'rgb(var(--color-starfish) / <alpha-value>)',
+        dragon: 'rgb(var(--color-dragon) / <alpha-value>)',
+        grizzly: {
+          DEFAULT: 'rgb(var(--color-grizzly) / <alpha-value>)',
+          lite: 'rgb(var(--color-grizzly-lite) / <alpha-value>)',
+        },
+        'gilded-secondary':
+          'rgb(var(--color-gilded-secondary) / <alpha-value>)',
+        'gold-shine': 'rgb(var(--color-gold-shine) / <alpha-value>)',
+        bee: 'rgb(var(--color-bee) / <alpha-value>)',
+        facebook: 'rgb(var(--color-facebook) / <alpha-value>)',
+        google: 'rgb(var(--color-google) / <alpha-value>)',
+      },
+      boxShadow: {
+        lesson:
+          '0 8px 0 rgb(0, 0, 0, 0.2), 0 8px 0 rgb(var(--path-character-color));',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -142,9 +156,17 @@ const config = {
         loading:
           'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite, bounce 1.5s infinite',
       },
+      transitionDuration: {
+        '2000': '2000ms',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
+  safelist: [
+    {
+      pattern: /(bg|text|outline|border|\[)-.*/,
+    },
+  ],
 } satisfies Config;
 
 export default config;

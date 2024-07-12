@@ -24,14 +24,36 @@ export async function GET(request: NextRequest, { params }: { params: Props }) {
     where: {
       id: userId,
     },
-    include: {
-      courses: true,
-      progress: {
-        include: {
-          active_course: true,
-        },
-      },
-    },
+    // include: {
+    //   courses: true,
+      // progress: true
+      // {
+        // include: {
+          // active_course: {
+            
+            // include: {
+            //   section: {
+            //     include: {
+            //       units: {
+            //         include: {
+            //           lessons: true,
+            //         },
+
+            //         orderBy: {
+            //           order: 'asc',
+            //         },
+            //       },
+            //     },
+
+            //     orderBy: {
+            //       title: 'asc',
+            //     },
+            //   },
+            // },
+          // },
+        // },
+      // },
+    // },
   });
 
   if (!user) {

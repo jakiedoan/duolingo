@@ -42,6 +42,7 @@ model Courses {
   user            User[]
   progress        Progress[]
   native_language Native_Language[]
+  section         Section[]
 }
 
 model Progress {
@@ -52,4 +53,38 @@ model Progress {
   hearts           Int     @default(5)
   user             User    @relation(fields: [user_id], references: [id])
   active_course    Courses @relation(fields: [active_course_id], references: [id])
+}
+
+model Section {
+  id        String  @id @default(uuid())
+  title     String
+  units     Unit[]
+  course_id String
+  courses   Courses @relation(fields: [course_id], references: [id])
+  order     Int
+}
+
+model Unit {
+  id            String     @id @default(uuid())
+  title         String
+  description   String
+  order         Int
+  section_id    String
+  section_units Section    @relation(fields: [section_id], references: [id])
+  levels        Level[]
+}
+
+model Level {
+  id      String   @id @default(uuid())
+  order   Int
+  unit_id String
+  unit    Unit     @relation(fields: [unit_id], references: [id])
+  lessons Lesson[]
+}
+
+model Lesson {
+  id       String @id @default(uuid())
+  order    Int
+  level_id String
+  level    Level  @relation(fields: [level_id], references: [id])
 }

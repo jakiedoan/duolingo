@@ -24,6 +24,24 @@ export async function GET(request: NextRequest, { params }: { params: Props }) {
     where: {
       id: id,
     },
+    include: {
+      section: {
+        include: {
+          units: {
+            include: {
+              lessons: true,
+            },
+            orderBy: {
+              order: 'asc',
+            },
+          },
+        },
+
+        orderBy: {
+          order: 'asc',
+        },
+      },
+    },
   });
 
   if (!course) {

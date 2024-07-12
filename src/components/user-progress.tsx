@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { InfinityIcon } from 'lucide-react';
@@ -16,15 +16,19 @@ import { Courses } from '@prisma/client';
 import { useClientTranslation } from '@/app/i18n/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons';
+import { usePutQuery } from '@/services';
+import { useUser } from '@/utils/provider/user';
+import { UserCourse } from '@/utils/types';
 
 type Props = {
-  courses: Courses[];
+  courses: UserCourse[];
   activeCourse: { imageSrc: string; title: string };
   streak: number;
   gems: number;
   hearts: number;
   hasActiveSubscription: boolean;
   lng: string;
+  handleChangeCourse: (id: string) => void;
 };
 
 function UserProgress({
@@ -35,6 +39,7 @@ function UserProgress({
   hearts,
   hasActiveSubscription,
   lng,
+  handleChangeCourse,
 }: Props) {
   const { t } = useClientTranslation(lng);
 
@@ -61,9 +66,10 @@ function UserProgress({
           <DropdownMenuGroup>
             {courses &&
               courses.map((item) => (
-                <DropdownMenuItem key={item.id} className=''>
-                  {/* px-2 py-1.5 */}
-                  {/* 10 12 10 20 */}
+                <DropdownMenuItem
+                  key={item.id}
+                  onClick={() => handleChangeCourse(item.id)}
+                >
                   <Image
                     src={item.image_src!}
                     alt='en'
@@ -81,7 +87,7 @@ function UserProgress({
               <Link href={`/${lng}/courses`} className='flex items-center'>
                 <FontAwesomeIcon
                   icon={faSquarePlus}
-                  className='text-hare-default mr-2 w-6 h-6'
+                  className='text-hare mr-2 w-6 h-6'
                 />
                 <span>{t('progress.new_course.btn')}</span>
               </Link>
@@ -91,7 +97,7 @@ function UserProgress({
       </DropdownMenu>
       <Button
         variant='ghost'
-        className={streak > 1 ? 'text-fox-default' : 'text-swan-default'}
+        className={streak > 1 ? 'text-fox' : 'text-swan'}
       >
         <Image
           src={
@@ -107,7 +113,7 @@ function UserProgress({
         {streak}
       </Button>
       <Link href='/shop'>
-        <Button variant='ghost' className='text-macaw-default'>
+        <Button variant='ghost' className='text-macaw'>
           <Image
             src='/assets/learn/gems.svg'
             height={22}
@@ -118,7 +124,7 @@ function UserProgress({
           {gems}
         </Button>
       </Link>
-      <Button variant='ghost' className='text-cardinal-default'>
+      <Button variant='ghost' className='text-cardinal'>
         <Image
           src='/assets/learn/hearts.svg'
           height={28}

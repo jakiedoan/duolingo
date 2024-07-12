@@ -12,17 +12,17 @@ function Loading({ className }: Props) {
     <div className={cn('flex gap-2 w-full justify-center', className)}>
       <FontAwesomeIcon
         icon={faCircle}
-        className='text-swan-default animate-loading'
+        className='text-swan animate-loading'
         size='xs'
       />
       <FontAwesomeIcon
         icon={faCircle}
-        className='text-swan-default animate-loading [animation-delay:-0.3s]'
+        className='text-swan animate-loading [animation-delay:-0.3s]'
         size='xs'
       />
       <FontAwesomeIcon
         icon={faCircle}
-        className='text-swan-default animate-loading [animation-delay:-0.15s]'
+        className='text-swan animate-loading [animation-delay:-0.15s]'
         size='xs'
       />
     </div>

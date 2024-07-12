@@ -19,7 +19,6 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function getSession(session: string) {
-  console.log(key)
   // const session = cookies().get('sessionToken')?.value;
 
   if (!session) return;

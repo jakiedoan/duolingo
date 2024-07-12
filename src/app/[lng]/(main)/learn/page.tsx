@@ -1,14 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FeedWrapper from '@/components/feed-wrapper';
 import StickyWrapper from '@/components/sticky-wrapper';
-import Header from './header';
-import UserProgress from '@/components/user-progress';
-import { useSession } from '@/utils/provider/session';
 import { useUser } from '@/utils/provider/user';
 import { useClientTranslation } from '@/app/i18n/client';
-import { Courses } from '@prisma/client';
+import { useFetchQuery, usePutQuery } from '@/services';
+import { UserCourse, UserProgress as UserProgressType } from '@/utils/types';
+import Unit from './unit';
+import Loading from '@/components/loading';
+import { Courses, Section } from '@prisma/client';
+import UserProgress from '@/components/user-progress';
 
 type Props = {
   params: {
@@ -18,17 +20,38 @@ type Props = {
 
 function LearnPage({ params }: Props) {
   const { t } = useClientTranslation(params.lng);
-
   const { user } = useUser();
 
-  const progress = user?.progress;
+  const {
+    isPending,
+    error,
+    mutateAsync: edit,
+  } = usePutQuery('update_progress', `progress/${user?.id}`, true);
+
+  const { data: progress } = useFetchQuery<UserProgressType>(
+    'user_progress',
+    `user/${user?.id}/progress`,
+    true
+  );
+
+  const { data: courses } = useFetchQuery<UserCourse[]>(
+    'user_courses',
+    `user/${user?.id}/courses`,
+    true
+  );
+
+  const handleSelectCourse = (id: string) => {
+    edit({
+      activeCourseId: id,
+    });
+  };
 
   return (
     <div className='flex flex-row-reverse gap-[48px] px-6'>
       <StickyWrapper>
-        {progress && (
+        {progress && courses && (
           <UserProgress
-            courses={user.courses}
+            courses={courses}
             activeCourse={{
               title: t(`course.${progress.active_course.title}`),
               imageSrc: progress.active_course.image_src,
@@ -38,11 +61,38 @@ function LearnPage({ params }: Props) {
             hearts={progress.hearts}
             hasActiveSubscription={false}
             lng={params.lng}
+            handleChangeCourse={handleSelectCourse}
           />
         )}
       </StickyWrapper>
+
       <FeedWrapper>
-        <Header title='Spanish' />
+        {isPending ? (
+          <Loading />
+        ) : (
+          <>
+            {progress && progress.active_course?.section?.length! > 0
+              ? progress.active_course.section[0].units.map((unit) => (
+                  <div key={unit.id} className='mb-10'>
+                    <Unit
+                      id={unit.id}
+                      order={unit.order}
+                      description={t(`learn.${unit.description}`)}
+                      title={`${t(
+                        `learn.${progress.active_course.section[0].title}`
+                      )} ${progress.active_course.section[0].order}, ${t(
+                        `learn.${unit.title}`
+                      )} ${unit.order}`}
+                      levels={unit.levels}
+                      activeLesson={undefined}
+                      activeLessonPercentage={0}
+                      code={progress.active_course.code}
+                    />
+                  </div>
+                ))
+              : null}
+          </>
+        )}
       </FeedWrapper>
     </div>
   );

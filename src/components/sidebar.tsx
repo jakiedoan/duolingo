@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, {  } from 'react';
+import React from 'react';
 import SidebarItem from '@/components/sidebar-item';
 import { useWindowDimension } from '@/utils/hooks/window-dimension';
 import { TFunction } from 'i18next';

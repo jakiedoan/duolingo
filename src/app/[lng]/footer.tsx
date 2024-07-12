@@ -23,7 +23,9 @@ function Footer({ t, nativeCourses, isPending }: Props) {
     <footer className='hidden tablet:block h-20 w-full border-t-2 border-slate-200 p-2'>
       <div className='max-w-screen-lg mx-auto flex items-center h-full'>
         {isPending ? (
-          <Loading />
+          <div>
+            <Loading />
+          </div>
         ) : (
           <Carousel
             opts={{

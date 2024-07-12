@@ -1,19 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { SignIn } from '@/components/sign-in';
 import { SignUp } from '@/components/sign-up';
 import { useClientTranslation } from '../i18n/client';
 import Footer from './footer';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/navigation';
 import { useFetchQuery } from '@/services';
 import { Native_Language } from '@prisma/client';
 import { NativeCourses } from '@/utils/types';
-import { useSession } from '@/utils/provider/session';
-import Loading from '@/components/loading';
 
 const Header = dynamic(() => import('./header'), { ssr: false });
 

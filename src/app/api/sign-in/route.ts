@@ -19,14 +19,6 @@ export async function POST(request: NextRequest) {
       where: {
         email: email,
       },
-      include: {
-        courses: true,
-        progress: {
-          include: {
-            active_course: true,
-          },
-        },
-      },
     });
 
     if (!user) {

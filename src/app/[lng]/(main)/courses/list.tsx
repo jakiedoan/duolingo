@@ -43,7 +43,7 @@ function List({ nativeCourses, activeList, lng }: Props) {
         nativeCourses.courses.map((course) => (
           <Card
             key={course.id}
-            id={course.code}
+            id={course.id}
             title={t(`course.${course.title}`)}
             imageSrc={course.image_src}
             onClick={handleSelectCourse}

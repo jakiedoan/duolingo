@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
@@ -12,7 +12,6 @@ import {
 import { useClientTranslation } from '../i18n/client';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import { useFetchQuery } from '@/services';
 import { Native_Language } from '@prisma/client';
 import Loading from '@/components/loading';
 

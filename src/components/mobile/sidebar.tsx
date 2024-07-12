@@ -47,7 +47,7 @@ function MobileSidebar({ lng, t }: Props) {
   ];
 
   return (
-    <div className='flex tablet:hidden fixed bottom-0 h-24 w-full bg-snow-default justify-between items-center px-10 border-t-2 border-swan-default'>
+    <div className='flex tablet:hidden fixed bottom-0 h-24 w-full bg-snow justify-between items-center px-10 border-t-2 border-swan'>
       {sidebar.map((item) => (
         <Button
           key={item.id}

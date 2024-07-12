@@ -11,6 +11,9 @@ const protectedPaths = [
   '/shop',
   '/profile',
   '/courses',
+  '/sections',
+  '/buttons',
+  '/lesson',
 ];
 
 const languages = locales;
@@ -56,16 +59,20 @@ export function authMiddleware(middleware: CustomMiddleware) {
     if (!lng) lng = acceptLanguage.get(request.headers.get('Accept-Language'));
     if (!lng) lng = 'en';
 
-    // Redirect to learn page if token is available in cookies.
-    if (token && !protectedPathsWithLocale.includes(pathname)) {
-      const signInUrl = new URL(`/${lng}/learn`, request.nextUrl);
-      return NextResponse.redirect(signInUrl);
-    }
-
     // Redirect to home page if there's no token in cookies.
     if (!token && protectedPathsWithLocale.includes(pathname)) {
       const signInUrl = new URL('/', request.nextUrl);
       signInUrl.searchParams.set('callbackUrl', pathname);
+      return NextResponse.redirect(signInUrl);
+    }
+
+    if (token && pathname.startsWith(`/${lng}/guidebook/`)) {
+      return middleware(request, event, response);
+    }
+
+    // // Redirect to learn page if token is available in cookies.
+    if (token && !protectedPathsWithLocale.includes(pathname)) {
+      const signInUrl = new URL(`/${lng}/learn`, request.nextUrl);
       return NextResponse.redirect(signInUrl);
     }
 

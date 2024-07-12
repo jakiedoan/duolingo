@@ -13,7 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
-import { NativeCourses } from '@/utils/types';
+import { NativeCourses, UserCourse } from '@/utils/types';
 import { useClientTranslation } from '@/app/i18n/client';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@/utils/provider/user';
@@ -45,8 +45,14 @@ function CoursesPage({ params: { lng } }: Props) {
     router.push(`/${code}`);
   };
 
+  const { data: courses } = useFetchQuery<UserCourse[]>(
+    'user_courses',
+    `user/${user?.id}/courses`,
+    true
+  );
+
   const activeList = nativeCourses?.courses.filter((course) => {
-    return user?.courses.find((userCourse) => {
+    return courses?.find((userCourse) => {
       return course.id === userCourse.id;
     });
   });
@@ -54,7 +60,7 @@ function CoursesPage({ params: { lng } }: Props) {
   return (
     <div className='h-full max-w-[912px] px-3 mx-auto'>
       <div className='flex justify-between items-center'>
-        <span className='hidden tablet:flex text-2xl font-bold text-eel-default'>
+        <span className='hidden tablet:flex text-2xl font-bold text-eel'>
           {t('courses.title.txt')}
         </span>
         <DropdownMenu>

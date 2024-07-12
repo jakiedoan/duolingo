@@ -109,14 +109,14 @@ export function SignUp({
   };
 
   return (
-    <div className='absolute w-full min-h-screen bg-snow-default top-0 left-0 flex flex-col'>
+    <div className='absolute w-full min-h-screen bg-snow top-0 left-0 flex flex-col'>
       <header className='h-20 w-full px-4'>
         <div className='flex items-center justify-end mobile:justify-between h-full'>
           <FontAwesomeIcon
             icon={faXmark}
             size='xl'
             onClick={() => setIsSignUp(false)}
-            className='text-hare-default cursor-pointer'
+            className='text-hare cursor-pointer'
           />
           <Button
             variant='primaryOutline'
@@ -224,11 +224,11 @@ export function SignUp({
             </Form>
 
             <div className='flex items-center w-full'>
-              <hr className='flex-grow border-t border-[1.5px] border-swan-default' />
-              <span className='px-3 text-swan-default'>
+              <hr className='flex-grow border-t border-[1.5px] border-swan' />
+              <span className='px-3 text-swan'>
                 {t('signUp.or.txt')}
               </span>
-              <hr className='flex-grow border-t border-[1.5px] border-swan-default' />
+              <hr className='flex-grow border-t border-[1.5px] border-swan' />
             </div>
             <div className='flex w-full justify-between gap-3'>
               <Button
@@ -246,7 +246,7 @@ export function SignUp({
             </div>
           </div>
 
-          <div className='relative text-sm text-hare-default w-full text-center space-y-3 pt-10 pb-2.5'>
+          <div className='relative text-sm text-hare w-full text-center space-y-3 pt-10 pb-2.5'>
             <p>{t('signUp.note_1.txt')}</p>
             <p>{t('signUp.note_2.txt')}</p>
           </div>
